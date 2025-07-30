@@ -6,8 +6,8 @@
     <title>Unity Web Player | DragRacerGame</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1" style="width: 1080px; height: 1920px; background: url('Build/DragRace6.jpg') center / cover"></canvas>
-    <script src="Build/DragRace6.loader.js"></script>
+    <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1" style="width: 1080px; height: 1920px; background: url('Build/Drag6Diagnostics.jpg') center / cover"></canvas>
+    <script src="Build/Drag6Diagnostics.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -26,9 +26,9 @@
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
-        dataUrl: "Build/DragRace6.data",
-        frameworkUrl: "Build/DragRace6.framework.js",
-        codeUrl: "Build/DragRace6.wasm",
+        dataUrl: "Build/Drag6Diagnostics.data",
+        frameworkUrl: "Build/Drag6Diagnostics.framework.js",
+        codeUrl: "Build/Drag6Diagnostics.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "DragRacerGame",
