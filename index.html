@@ -4,10 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity Web Player | DragRacerGame</title>
+    <link rel="stylesheet" href="TemplateData/diagnostics.css">
+    <script src="TemplateData/diagnostics.js"></script>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1" style="width: 1080px; height: 1920px; background: url('Build/Drag6Diagnostics.jpg') center / cover"></canvas>
-    <script src="Build/Drag6Diagnostics.loader.js"></script>
+    <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1" style="width: 1080px; height: 1920px; background: url('Build/Race62.jpg') center / cover"></canvas>
+    <div id="unity-footer">
+        <img id="diagnostics-icon" src="TemplateData/webmemd-icon.png">
+    </div>
+    <script src="Build/Race62.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -22,19 +27,32 @@
         canvas.style.position = "fixed";
 
         document.body.style.textAlign = "left";
+
+        // position the diagnostics icon in the corner on the canvas
+        let diagnostics_icon = document.getElementById("diagnostics-icon");
+        diagnostics_icon.style.position = "fixed";
+        diagnostics_icon.style.bottom = "10px";
+        diagnostics_icon.style.right = "0px";
+        canvas.after(diagnostics_icon);
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
-        dataUrl: "Build/Drag6Diagnostics.data",
-        frameworkUrl: "Build/Drag6Diagnostics.framework.js",
-        codeUrl: "Build/Drag6Diagnostics.wasm",
+        dataUrl: "Build/Race62.data",
+        frameworkUrl: "Build/Race62.framework.js",
+        codeUrl: "Build/Race62.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "DragRacerGame",
         productVersion: "0.1.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      }).then((unityInstance) => {
+        document.getElementById("diagnostics-icon").onclick = () => {
+            unityDiagnostics.openDiagnosticsDiv(unityInstance.GetMetricsInfo);
+        };
+      }).catch((message) => {
+        alert(message);
       });
     </script>
   </body>
